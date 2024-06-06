@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Crawler</title>
+    <!-- Include the vis.js library for network visualization -->
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <!-- Create a div to hold the network visualization -->
+    <div id="mynetwork" style="width: 100vw; height: 100vh;"></div>
+
+
+    <script type="text/javascript">
+        // Function to convert adjacency matrix to nodes and edges format for vis.js
+        function convertMatrixToGraphData(matrix) {
+            let nodes = [];
+            let edges = [];
+
+            // Iterate over the matrix
+            for (let i = 0; i < matrix.length; i++) {
+                // Create a node for each row in the matrix
+                nodes.push({ id: i+1, label: `${i+1}` });
+                for (let j = 0; j < matrix[i].length; j++) {
+                    // Create an edge for each '1' in the matrix
+                    if (matrix[i][j] === 1) {
+                        edges.push({ from: i+1, to: j+1 });
+                    }
+                }
+            }
+
+            // Return the nodes and edges
+            return { nodes, edges };
+        }
+
+        // Create a new XMLHttpRequest object
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            // When the request is complete and successful
+            if (this.readyState == 4 && this.status == 200) {
+                // Parse the response text (the adjacency matrix) as JSON
+                var matrix = JSON.parse(this.responseText);
+                // Convert the matrix to nodes and edges format
+                var data = convertMatrixToGraphData(matrix);
+                
+                // Log the data
+                console.log('Data:', data);  
+
+                // Get the container for the network
+                var container = document.getElementById('mynetwork');
+
+                // Define options for the network
+                var options = {
+                    physics: {
+                        solver: 'forceAtlas2Based',
+                        timestep: 0.35,
+                        stabilization: { iterations: 150 }
+                    }
+                };
+                // Create the network
+                var network = new vis.Network(container, data, options);
+                
+                // Fit all nodes in the view
+                network.fit();
+            }
+        };
+        // Send a GET request to the server for the adjacency matrix
+        xmlhttp.open("GET", "adjacencyMatrix.json", true); 
+        xmlhttp.send();
+    </script>
+</body>
+</html>
