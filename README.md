@@ -7,7 +7,8 @@
 
 A web crawler application that creates web-link graphs and finds the Closeness Centrality for each node.
 
-![Graph Image](https://github.com/Web-Crawler_JS/graph2.jpeg)
+![Graph Image](https://github.com/joyce6288/Web-Crawler_JS/blob/main/graph2.jpeg)
+
 
 In today's digital world, there's a growing need for tools that help us understand and navigate the complex connections of the internet. This project aims to create a comprehensive web crawling and analysis tool using JavaScript and Node.js. The primary goal is to gather information from web pages, visualize the connections between them, and analyze the structure of the web graph to identify key pages based on centrality measures.
 
