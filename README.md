@@ -141,8 +141,7 @@ This collaborative approach not only enhanced our understanding of the subject b
 
 Here is a graph generated from crawling the website [youtube.com](https://www.youtube.com) with a depth of 100 and a maximum of 10,000 links:
 
-![Graph Image](https://github.com/csc3430-winter2024/web-crawler-term-and-graph-9/raw/main/pictures/graph1.png)
-
+![Graph Image](https://github.com/joyce6288/web-crawler-term-and-graph-9/raw/main/pictures/graph1.png)
 
 ![Graph Image](https://github.com/csc3430-winter2024/web-crawler-term-and-graph-9/blob/main/pictures/program.png)
 
